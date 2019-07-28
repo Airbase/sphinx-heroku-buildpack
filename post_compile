@@ -2,6 +2,8 @@
 
 set -e
 
+BUILD_DIR=docs
+
 # Set graphviz path
 PATH=/app/graphviz/bin:$PATH
 
@@ -11,8 +13,9 @@ pip install static
 # Needed to serve the application (Procfile)
 pip install waitress
 
-pip install -r ${BUILD_DIR}/requirements.txt
+#pip install -r ${BUILD_DIR}/requirements.txt
 
 mkdir -p ${BUILD_DIR}/_build ${BUILD_DIR}/_static
+
 # Build Sphinx documentation
 (cd ${BUILD_DIR} && sphinx-build -b html -a -n . _build)
